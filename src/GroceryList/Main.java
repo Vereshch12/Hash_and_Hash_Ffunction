@@ -12,5 +12,11 @@ public class Main {
         prizma.printListOfProduct();
         prizma.deleteProductFromList(apple);
         prizma.printListOfProduct();
+        Receipt receipt1 = new Receipt("Первый рецет");
+        receipt1.addProducts(apple);
+        receipt1.addProducts(lemon);
+        BookOfReceipts book1 = new BookOfReceipts<>("Номер одни");
+        book1.addReceiptInBook(receipt1);
+       // book1.printBookOfReceipts();
     }
 }

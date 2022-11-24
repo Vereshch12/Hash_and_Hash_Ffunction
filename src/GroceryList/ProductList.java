@@ -7,13 +7,12 @@ import static GroceryList.Product.checkNaming;
 public class ProductList <P extends Product>{
 
     private String name;
-
+    private Set<P> listOfProduct = new HashSet<>();
     public ProductList(String name) {
         checkNaming(name);
         this.name = name;
     }
 
-    private Set<P> listOfProduct = new HashSet<>();
 
     private void checkProductUniqueness(P product){
         if (listOfProduct.contains(product)){
@@ -61,6 +60,7 @@ public class ProductList <P extends Product>{
         this.name = name;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -74,5 +74,12 @@ public class ProductList <P extends Product>{
         return Objects.hash(name, listOfProduct);
     }
 
-
+    @Override
+    public String toString() {
+        return "ProductList{" +
+                "name='" + name + '\'' +
+                ", listOfProduct=" + listOfProduct +
+                ", totalPrice=" +
+                '}';
+    }
 }
