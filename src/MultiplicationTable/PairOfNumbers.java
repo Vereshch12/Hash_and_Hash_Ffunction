@@ -26,13 +26,20 @@ public class PairOfNumbers {
         return false;
     }
 
-    public void createAllTasks(){
+    private void createAllTasks(){
         while (pairsOfNumbers.size() < 15){
             String generationTask  = generateNumbers();
             while (checkNumbers(generationTask)){
                 generationTask  = generateNumbers();
             }
             pairsOfNumbers.add(generationTask);
+        }
+    }
+
+    public void printTask(){
+        createAllTasks();
+        for (String task: pairsOfNumbers){
+            System.out.println(task);
         }
     }
 
