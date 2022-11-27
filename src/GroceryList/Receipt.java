@@ -1,8 +1,7 @@
 package GroceryList;
 import java.sql.Array;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
+
 import static GroceryList.Product.checkNaming;
 
 public class Receipt <P extends Product>{
@@ -10,7 +9,7 @@ public class Receipt <P extends Product>{
     private String name;
     private double totalPrice;
 
-    private Set<P> receipt = new HashSet<>();
+    private Map<Product, Double> receipt = new HashMap<>();
 
     public Receipt(String name) {
         checkNaming(name);
@@ -18,24 +17,15 @@ public class Receipt <P extends Product>{
     }
 
     private void checkProductUniqueness(P product){
-        if (receipt.contains(product)){
+        if (receipt.containsKey(product)){
             throw new RuntimeException("Продукт " + product.getName() +" уже есть в списке рецепта. Добавьте уникальный продукт!");
         }
     }
 
     public void addProducts(P product){
         checkProductUniqueness(product);
-        receipt.add(product);
-        this.totalPrice += product.getPrice();
-    }
-
-    @Override
-    public String toString() {
-        return "Receipt{" +
-                "name='" + name + '\'' +
-                ", totalPrice=" + totalPrice +
-                ", receipt=" + receipt +
-                '}';
+        receipt.put(product, product.getWeight());
+        this.totalPrice += product.getPrice()*product.getPrice();
     }
 
     public String getName() {
@@ -46,7 +36,7 @@ public class Receipt <P extends Product>{
         return totalPrice;
     }
 
-    public Set<P> getReceipt() {
+    public Map<Product, Double> getReceipt() {
         return receipt;
     }
 
@@ -55,7 +45,7 @@ public class Receipt <P extends Product>{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Receipt<?> receipt1 = (Receipt<?>) o;
-        return Objects.equals(name, receipt1.name);
+        return Double.compare(receipt1.totalPrice, totalPrice) == 0 && Objects.equals(name, receipt1.name) && Objects.equals(receipt, receipt1.receipt);
     }
 
     @Override
@@ -63,6 +53,11 @@ public class Receipt <P extends Product>{
         return Objects.hash(name, totalPrice, receipt);
     }
 
-
+    @Override
+    public String toString() {
+        return "Название рецепта: " + name +
+                "totalPrice=" + totalPrice +
+                "receipt=" + receipt;
+    }
 }
 

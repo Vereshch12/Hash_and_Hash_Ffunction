@@ -61,7 +61,6 @@ public class Product {
     public String toString() {
         return "\nПродукт: " + name +
                 "\n   Цена: " + price
-                + "\n   Вес: " + weight +
-                "\n   " + status;
+                + "\n   Вес: ";
     }
 }
