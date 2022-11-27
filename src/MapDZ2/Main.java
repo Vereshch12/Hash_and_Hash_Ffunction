@@ -5,5 +5,8 @@ public class Main {
         First first = new First();
         System.out.println(first.generateInitialCollection());
         System.out.println(first.changeCollection());
+        Second second = new Second();
+        System.out.println(second.generateInitialCollection());
+        System.out.println(second);
     }
 }
