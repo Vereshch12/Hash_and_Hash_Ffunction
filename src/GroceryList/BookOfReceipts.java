@@ -1,5 +1,6 @@
 package GroceryList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import static GroceryList.Product.checkNaming;
@@ -8,7 +9,7 @@ public class BookOfReceipts {
 
     private String name;
 
-    private Set<Product> bookOfReceipts = new HashSet<>();
+    private Set<Receipt> bookOfReceipts = new HashSet<>();
 
     public BookOfReceipts(String name) {
         checkNaming(name);
@@ -36,7 +37,7 @@ public class BookOfReceipts {
             System.out.println("Продукты входящие в рецепт: ");
             System.out.println("|№  |Продукт         |Цена(руб)       |Количество(кг)  |Статус          |");
             System.out.println("|¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯|");
-            for (Product product: receipt){
+            for (Product product: receipt.getReceipt().keySet()){
                 count++;
                 System.out.printf("|%-3d|%-16s|%-16.2f|%-16.2f|%-16s|\n", count,product.getName(), product.getPrice(), product.getWeight(), product.getStatus());
                 System.out.println("¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯");
