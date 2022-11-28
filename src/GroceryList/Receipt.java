@@ -4,7 +4,7 @@ import java.util.*;
 
 import static GroceryList.Product.checkNaming;
 
-public class Receipt <P extends Product>{
+public class Receipt{
 
     private String name;
     private double totalPrice;
@@ -16,13 +16,13 @@ public class Receipt <P extends Product>{
         this.name = name;
     }
 
-    private void checkProductUniqueness(P product){
+    private void checkProductUniqueness(Product product){
         if (receipt.containsKey(product)){
             throw new RuntimeException("Продукт " + product.getName() +" уже есть в списке рецепта. Добавьте уникальный продукт!");
         }
     }
 
-    public void addProducts(P product){
+    public void addProducts(Product product){
         checkProductUniqueness(product);
         receipt.put(product, product.getWeight());
         this.totalPrice += product.getPrice()*product.getPrice();
@@ -44,7 +44,7 @@ public class Receipt <P extends Product>{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Receipt<?> receipt1 = (Receipt<?>) o;
+        Receipt receipt1 = (Receipt) o;
         return Double.compare(receipt1.totalPrice, totalPrice) == 0 && Objects.equals(name, receipt1.name) && Objects.equals(receipt, receipt1.receipt);
     }
 

@@ -19,10 +19,8 @@ public class Main {
         receipt1.addProducts(banan);
         receipt1.addProducts(lemon);
         System.out.println(receipt1);
-//        receipt1.addProducts(apple);
-//        receipt1.addProducts(lemon);
-//        BookOfReceipts book1 = new BookOfReceipts<>("Номер одни");
-//        book1.addReceiptInBook(receipt1);
-       // book1.printBookOfReceipts();
+        BookOfReceipts book1 = new BookOfReceipts("Номер одни");
+        book1.addReceiptInBook(receipt1);
+        book1.printBookOfReceipts();
     }
 }
